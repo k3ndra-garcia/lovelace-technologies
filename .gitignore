@@ -5,3 +5,7 @@ next-env.d.ts
 *.tsbuildinfo
 .DS_Store
 .env*.local
+
+# Reference images saved from a third-party site; not ours to redistribute.
+Media for Lovelace/Ada_Lovelace_Portrait_KIDS_Women-Heroes_02-21_16x9.avif
+Media for Lovelace/ada love lace national geo kids.webp
