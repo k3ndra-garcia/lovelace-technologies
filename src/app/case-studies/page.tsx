@@ -4,15 +4,16 @@ import { Work } from "@/components/home/Work";
 import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Work",
-  description: "Selected engagements from Lovelace Technologies.",
+  title: "Case Studies",
+  description:
+    "Engagements from Lovelace Technologies across AI enablement, implementation, audits, governance, and strategy.",
 };
 
-export default function WorkPage() {
+export default function CaseStudiesPage() {
   return (
     <>
       <PageHero
-        title={["Selected work"]}
+        title={["Case studies"]}
         lead="Engagements across AI enablement, implementation, audits, governance, and strategy, shared with our clients' permission."
       />
       <Work heading={false} />

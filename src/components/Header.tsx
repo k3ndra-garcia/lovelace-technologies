@@ -114,7 +114,7 @@ function SiteMenu({ onClose }: { onClose: () => void }) {
           exit: { opacity: 0, transition: { duration: 0.15 } },
         };
 
-  const links = [...nav, ...(site.showWorkInNav ? [{ label: "Work", href: "/work" }] : [])];
+  const links = nav;
 
   return (
     <motion.div

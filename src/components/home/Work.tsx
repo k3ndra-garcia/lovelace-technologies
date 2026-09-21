@@ -23,6 +23,9 @@ export function Work({ heading = true }: { heading?: boolean }) {
             </h2>
             <LineReveal as="p" className="t-h2" lines={["Results, documented", "with permission."]} />
           </div>
+          <Link href="/case-studies" className="text-link">
+            All case studies
+          </Link>
         </div>
       )}
 
@@ -30,7 +33,7 @@ export function Work({ heading = true }: { heading?: boolean }) {
         <ul className="services__list" style={{ gridColumn: "1 / -1" }}>
           {caseStudies.map((cs) => (
             <li key={cs.slug}>
-              <Link href={`/work/${cs.slug}`} className="service-row">
+              <Link href={`/case-studies/${cs.slug}`} className="service-row">
                 <h3 className="t-h3 service-row__title">{cs.title}</h3>
                 <p className="service-row__summary">
                   {cs.client}, {cs.sector}. {cs.summary}

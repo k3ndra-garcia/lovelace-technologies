@@ -24,8 +24,7 @@ npm run brand     # regenerate brand assets from the source logo
 Copy and structure live in [`src/content/site.ts`](src/content/site.ts):
 
 - **Add a service** — append to `services`; the page, nav entry and homepage panel follow.
-- **Publish case studies** — add to `caseStudies`, then set `site.showWorkInNav = true`.
-- **Publish articles** — add to `insights` and create `src/app/insights/[slug]/page.tsx`.
+- **Publish case studies** — add to `caseStudies`; the homepage section and `/case-studies` switch from the empty state to a list.
 
 ## Deployment
 

@@ -9,15 +9,13 @@ export const site = {
     "Lovelace Technologies helps organizations evaluate, implement, and scale modern technology, from assessment to implementation.",
   calendlyUrl: "https://calendly.com/lovelacetechnologies",
   email: "lovelacetechnologiesgt@gmail.com",
-  // Flip to true once the first case studies are published.
-  showWorkInNav: false,
 };
 
 export const nav = [
   { label: "Services", href: "/services" },
   { label: "Approach", href: "/approach" },
   { label: "About", href: "/about" },
-  { label: "Insights", href: "/insights" },
+  { label: "Case Studies", href: "/case-studies" },
 ] as const;
 
 export type Service = {
@@ -244,16 +242,6 @@ export type CaseStudy = {
   summary: string;
 };
 
-// Empty until case studies are cleared with clients. The homepage and /work
-// page render a considered empty state until entries are added.
+// Empty until case studies are cleared with clients. The homepage section and
+// /case-studies render a considered empty state until entries are added.
 export const caseStudies: CaseStudy[] = [];
-
-export type Insight = {
-  slug: string;
-  title: string;
-  summary: string;
-  date: string;
-  topic: string;
-};
-
-export const insights: Insight[] = [];

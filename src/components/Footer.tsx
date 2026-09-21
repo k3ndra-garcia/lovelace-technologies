@@ -29,8 +29,7 @@ export function Footer() {
             <h2>Company</h2>
             <Link href="/approach">Approach</Link>
             <Link href="/about">About</Link>
-            <Link href="/insights">Insights</Link>
-            {site.showWorkInNav && <Link href="/work">Work</Link>}
+            <Link href="/case-studies">Case studies</Link>
           </div>
 
           <div className="footer__col">

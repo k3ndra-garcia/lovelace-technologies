@@ -94,12 +94,13 @@ a new one only needs a `shift` that keeps it roughly centred. The `/services` pa
 keeps the typographic row list; the panels are the homepage treatment.
 
 ## Information architecture
-`/` · `/services` · `/services/[slug]` (5) · `/approach` · `/about` · `/insights` · `/contact` · `/work` (built, hidden from nav)
+`/` · `/services` · `/services/[slug]` (5) · `/approach` · `/about` · `/case-studies` · `/contact`
+
+`/insights` and `/work` redirect to `/case-studies` (permanent, in `next.config.ts`).
 
 All copy and structure lives in `src/content/site.ts`:
 - Add a service: append to `services`.
-- Publish case studies: add to `caseStudies`, then set `site.showWorkInNav = true`.
-- Publish articles: add to `insights` and create `src/app/insights/[slug]/page.tsx`.
+- Publish case studies: add to `caseStudies`; the homepage section and `/case-studies` switch from the empty state to a list. Individual pages need `src/app/case-studies/[slug]/page.tsx`.
 
 ## Before launch
 - [ ] Real Calendly link in `site.ts` (email is set)
