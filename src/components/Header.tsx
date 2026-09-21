@@ -171,7 +171,7 @@ function SiteMenu({ onClose }: { onClose: () => void }) {
           </motion.div>
 
           <motion.div className="menu__foot" {...item(links.length + 1)}>
-            <ContactTrigger variant="light">Talk to Lovelace</ContactTrigger>
+            <ContactTrigger>Talk to Lovelace</ContactTrigger>
             <a href={`mailto:${site.email}`} className="t-caption">
               {site.email}
             </a>

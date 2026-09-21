@@ -12,7 +12,7 @@
   --ink: #e9eceb;
   --slate: #9aa1a6;
   --accent: var(--brand);
-  --accent-hover: #bccaf7;
+  --accent-hover: #7fd7a4;
   --rule: #262a2f;
   --rule-strong: #3b4248;
 
@@ -21,13 +21,13 @@
   --on-night: #e9eceb;
   --on-night-muted: #9aa1a6;
   --night-rule: #23272b;
-  --accent-on-night: #93a9f0;
+  --accent-on-night: var(--brand);
 
   /* Text and marks sitting on a block of colour. */
   --on-color: #eceff3;
 
-  /* One blue, used at four depths. Everything else is ground, bone or ink. */
-  --brand: #8aa4f2;
+  /* Blue carries the surfaces; a milky green carries the actions. */
+  --brand: #9fe5bc;
   --brand-block: #1b308c;
   --block-blue: var(--brand-block);
   --stage-1: #101b52;
@@ -142,8 +142,8 @@ html {
   --vellum: #dedbd3;
   --ink: #16191d;
   --slate: #5b6268;
-  --accent: #1b308c;
-  --accent-hover: #142466;
+  --accent: #1c5a3a;
+  --accent-hover: #12402a;
   --rule: #c7c3b9;
   --rule-strong: #a9a49a;
   --card: #d9d6cd;
@@ -464,7 +464,7 @@ ol {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: var(--ink);
+  background: var(--accent-hover);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform var(--dur-base) var(--ease-out);
@@ -498,18 +498,6 @@ ol {
 .btn:hover .btn__hole::after,
 .btn[aria-expanded="true"] .btn__hole::after {
   transform: scaleY(1);
-}
-
-.btn--light {
-  --btn-bg: var(--on-night);
-  --btn-fg: var(--night);
-  --btn-hole: var(--night);
-}
-
-.btn--light:hover,
-.btn--light[aria-expanded="true"] {
-  --btn-fg: var(--paper);
-  --btn-hole: var(--paper);
 }
 
 .btn--small {

@@ -21,17 +21,17 @@ never hard-code a light or dark value.
 | Text on colour blocks | `--on-color` | `#ECEFF3` | `#ECEFF3` |
 
 ### Colour
-One blue, one bone, near-black. Nothing else. (The site briefly carried five
+Blue carries the surfaces, a milky green carries the actions, bone and near-black do the rest. (The site briefly carried five
 practice colours; it was too busy, and the reference we follow — OCI by
 Buzzworthy — gets its force from restraint.)
 
 | Role | Token | Value |
 |---|---|---|
-| Brand mark / accent on dark | `--brand` | `#8AA4F2` |
+| Accent: buttons, marks, links | `--brand` | `#9FE5BC` (milky green) |
 | Brand block | `--brand-block` | `#1B308C` |
 | Stage blocks (Approach) | `--stage-1…4` | `#101B52` → `#2139A9` |
 | Bone (light blocks) | `.on-paper --paper` | `#E9E7E1` |
-| Accent on bone | `.on-paper --accent` | `#1B308C` |
+| Accent on bone | `.on-paper --accent` | `#1C5A3A` |
 | Text on colour | `--on-color` | `#ECEFF3` |
 
 How colour is applied:

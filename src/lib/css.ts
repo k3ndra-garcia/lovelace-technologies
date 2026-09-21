@@ -5,4 +5,4 @@ export const vars = (values: Record<string, string>) => values as React.CSSPrope
 export const stageBlocks = ["#101B52", "#16266F", "#1B308C", "#2139A9"];
 
 /** The mark colour that sits on those blocks. */
-export const onStage = "#AEBEF7";
+export const onStage = "#9FE5BC";

@@ -189,7 +189,6 @@ function ContactPopover({ anchor, onClose }: { anchor: Anchor; onClose: () => vo
 type ContactTriggerProps = {
   children?: React.ReactNode;
   className?: string;
-  variant?: "dark" | "light";
   size?: "default" | "small";
 };
 
@@ -197,7 +196,6 @@ type ContactTriggerProps = {
 export function ContactTrigger({
   children = "Talk to Lovelace",
   className = "",
-  variant = "dark",
   size = "default",
 }: ContactTriggerProps) {
   const ctx = useContext(ContactMenuContext);
@@ -205,12 +203,7 @@ export function ContactTrigger({
   if (!ctx) throw new Error("ContactTrigger must be used inside ContactMenuProvider");
 
   const expanded = ctx.trigger !== null && ctx.trigger === ref.current;
-  const classes = [
-    "btn",
-    variant === "light" ? "btn--light" : "",
-    size === "small" ? "btn--small" : "",
-    className,
-  ]
+  const classes = ["btn", size === "small" ? "btn--small" : "", className]
     .filter(Boolean)
     .join(" ");
 
