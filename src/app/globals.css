@@ -1053,6 +1053,15 @@ ol {
     linear-gradient(0deg, color-mix(in srgb, var(--brand-block) 42%, transparent), color-mix(in srgb, var(--brand-block) 42%, transparent));
 }
 
+/* The lens sits above the footage but under the mask, so masked areas stay
+   legible while the punched holes read through the lighter parts. */
+.hero__lens {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
 .hero__grid {
   flex: 1;
   align-items: end;
@@ -1065,7 +1074,7 @@ ol {
 }
 
 .hero__copy {
-  grid-column: 1 / span 8;
+  grid-column: 1 / span 9;
   align-self: end;
   position: relative;
   z-index: 1;

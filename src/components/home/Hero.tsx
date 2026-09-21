@@ -4,10 +4,9 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ContactTrigger } from "@/components/ContactMenu";
+import { HeroCursor } from "./HeroCursor";
 import { LineReveal } from "@/components/motion/LineReveal";
 import { Reveal } from "@/components/motion/Reveal";
-import { PunchCard } from "@/components/PunchCard";
-import silhouette from "@/content/silhouette-grid.json";
 import { services } from "@/content/site";
 
 export function Hero() {
@@ -23,7 +22,6 @@ export function Hero() {
     return () => mq.removeEventListener("change", sync);
   }, []);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const cardY = useTransform(scrollYProgress, [0, 1], [0, -90]);
   const copyY = useTransform(scrollYProgress, [0, 1], [0, 50]);
 
   return (
@@ -46,6 +44,7 @@ export function Hero() {
           </video>
         )}
         <span className="hero__mask" />
+        <HeroCursor />
       </div>
       <div className="grid hero__grid">
         <motion.div className="hero__copy" style={reduce ? undefined : { y: copyY }}>
@@ -70,21 +69,6 @@ export function Hero() {
           </Reveal>
         </motion.div>
 
-        <motion.div className="hero__figure" style={reduce ? undefined : { y: cardY }}>
-          <PunchCard
-            grid={silhouette}
-            className="hero__card"
-            delay={0.5}
-            label="A punched card whose holes form the Lovelace silhouette"
-          />
-          <Reveal delay={1.9} y={8} className="hero__caption">
-            <span className="hole" aria-hidden="true" style={{ marginTop: "0.3rem" }} />
-            <p className="t-caption">
-              Babbage&apos;s Analytical Engine read its instructions from punched cards. Ada Lovelace
-              saw that it could work with far more than numbers.
-            </p>
-          </Reveal>
-        </motion.div>
       </div>
 
       <Reveal delay={1.1} y={0} className="hero__foot t-small">
