@@ -11,7 +11,6 @@ import { useRef } from "react";
 import { LineReveal } from "@/components/motion/LineReveal";
 import { Reveal } from "@/components/motion/Reveal";
 import { approach } from "@/content/site";
-import { vars } from "@/lib/css";
 
 const centers = [12.5, 37.5, 62.5, 87.5];
 
@@ -43,11 +42,7 @@ export function Through() {
   const endOpacity = useTransform(progress, [0.85, 1], [0, 1]);
 
   return (
-    <section
-      className="section on-block"
-      aria-labelledby="through-title"
-      style={vars({ "--block": "var(--brand-block)" })}
-    >
+    <section className="section" aria-labelledby="through-title">
       <div className="container">
       <div className="grid">
         <div className="through__head">

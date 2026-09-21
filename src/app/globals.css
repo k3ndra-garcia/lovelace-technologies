@@ -107,33 +107,6 @@ html {
   }
 }
 
-/* A full-bleed block of one ink: flips the tokens for its subtree. */
-.on-block {
-  --ink: var(--on-color);
-  --track-dim: color-mix(in srgb, var(--on-color) 34%, transparent);
-  --slate: color-mix(in srgb, var(--on-color) 78%, transparent);
-  --rule: color-mix(in srgb, var(--on-color) 26%, transparent);
-  --rule-strong: color-mix(in srgb, var(--on-color) 45%, transparent);
-  --accent: var(--on-color);
-  --mark: var(--on-color);
-  --paper: var(--block, var(--block-teal));
-
-  background: var(--block, var(--block-teal));
-  color: var(--ink);
-}
-
-.on-block .track__line {
-  background: var(--track-dim);
-}
-
-.on-block .track__hole {
-  background: var(--track-dim);
-}
-
-.on-block .track__dash {
-  border-top-color: var(--track-dim);
-}
-
 /* A porcelain block inside the dark site: flips the tokens for its subtree. */
 .on-paper {
   color-scheme: light;
