@@ -41,14 +41,6 @@ export function Founders({ showLink = true }: { showLink?: boolean }) {
           <Reveal>
             <p className="t-h3">Founded by Georgia Tech graduates.</p>
           </Reveal>
-          <Reveal delay={0.06}>
-            <p className="t-muted">
-              Our founders hold graduate degrees in business and management, including an MBA and an
-              M.S. in Management. That pairing shapes how we work: fluent in the technology, grounded
-              in budgets and operations, and focused on the people who have to use what we build.
-            </p>
-          </Reveal>
-
           {showLink && (
             <Link href="/about" className="text-link" style={{ justifySelf: "start" }}>
               More about Lovelace
