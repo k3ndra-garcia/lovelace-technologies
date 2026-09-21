@@ -36,7 +36,9 @@ The contact form uses **Netlify Forms**. The form Netlify indexes lives in
 to that path. Submissions appear under **Site configuration → Forms**, and email
 notifications are configured there.
 
-Field names must match between the two files. Posting only works on a deployed
+The form posts as multipart, so the optional attachment (8MB ceiling, Netlify's
+limit) is stored with the submission. Field names must match between the two
+files. Posting only works on a deployed
 Netlify site, so submitting from `localhost` shows the form's error state.
 
 ## Before launch

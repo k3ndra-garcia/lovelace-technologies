@@ -10,15 +10,23 @@
       pages, so the contact form is declared here. The real form lives in
       src/components/ContactForm.tsx and posts to this path. Field names must match.
     -->
-    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <form
+      name="contact"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      enctype="multipart/form-data"
+      hidden
+    >
       <input type="hidden" name="form-name" value="contact" />
       <input name="bot-field" />
       <input type="text" name="name" />
       <input type="email" name="email" />
       <input type="text" name="company" />
       <input type="text" name="role" />
+      <input type="url" name="website" />
       <input type="text" name="interests" />
       <textarea name="message"></textarea>
+      <input type="file" name="attachment" />
     </form>
   </body>
 </html>
