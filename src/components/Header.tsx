@@ -16,12 +16,9 @@ export function Header() {
   const [hidden, setHidden] = useState(false);
   const [overLight, setOverLight] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [megaOpen, setMegaOpen] = useState(false);
-  const closeTimer = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     setMenuOpen(false);
-    setMegaOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -61,127 +58,42 @@ export function Header() {
     };
   }, [pathname]);
 
-  useEffect(() => {
-    if (!megaOpen) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMegaOpen(false);
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [megaOpen]);
-
-  const openMega = () => {
-    window.clearTimeout(closeTimer.current);
-    setMegaOpen(true);
-  };
-  const closeMegaSoon = () => {
-    window.clearTimeout(closeTimer.current);
-    closeTimer.current = window.setTimeout(() => setMegaOpen(false), 140);
-  };
-
-  const isCurrent = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
-
   return (
     <>
       <header
         className="header"
-        data-scrolled={scrolled || megaOpen}
-        data-hidden={hidden && !megaOpen && !menuOpen}
-        data-theme={overLight && !megaOpen ? "light" : "dark"}
+        data-scrolled={scrolled}
+        data-hidden={hidden && !menuOpen}
+        data-theme={overLight ? "light" : "dark"}
       >
         <div className="container header__inner">
           <Brand />
           <nav className="nav" aria-label="Main">
-            <ul className="nav__list">
-              {nav.map((item) =>
-                item.href === "/services" ? (
-                  <li
-                    key={item.href}
-                    className="nav__item--services"
-                    onPointerEnter={openMega}
-                    onPointerLeave={closeMegaSoon}
-                    onFocus={openMega}
-                    onBlur={(e) => {
-                      if (!e.currentTarget.contains(e.relatedTarget as Node)) closeMegaSoon();
-                    }}
-                  >
-                    <Link
-                      href={item.href}
-                      className="nav__link"
-                      aria-current={isCurrent(item.href) ? "page" : undefined}
-                      aria-expanded={megaOpen}
-                      aria-controls="services-panel"
-                    >
-                      {item.label}
-                    </Link>
-                    <AnimatePresence>
-                      {megaOpen && (
-                        <motion.div
-                          id="services-panel"
-                          className="mega"
-                          initial={{ opacity: 0, y: -6 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -4, transition: { duration: 0.15 } }}
-                          transition={{ duration: 0.3, ease }}
-                        >
-                          <ul>
-                            {services.map((s) => (
-                              <li key={s.slug}>
-                                <Link href={`/services/${s.slug}`} className="mega__link">
-                                  <span className="mega__title">{s.title}</span>
-                                  <span className="mega__summary">{s.summary}</span>
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                          <Link href="/services" className="mega__all">
-                            How our services fit together
-                          </Link>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </li>
-                ) : (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="nav__link"
-                      aria-current={isCurrent(item.href) ? "page" : undefined}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ),
-              )}
-              {site.showWorkInNav && (
-                <li>
-                  <Link href="/work" className="nav__link" aria-current={isCurrent("/work") ? "page" : undefined}>
-                    Work
-                  </Link>
-                </li>
-              )}
-            </ul>
             <ContactTrigger size="small" />
             <button
               type="button"
-              className="menu-toggle"
+              className="menu-btn"
               aria-expanded={menuOpen}
               aria-controls="site-menu"
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
               onClick={() => setMenuOpen((open) => !open)}
             >
-              <span />
-              <span />
+              <span className="menu-btn__bars" aria-hidden="true">
+                <span />
+                <span />
+              </span>
+              Menu
             </button>
           </nav>
         </div>
       </header>
       <AnimatePresence>
-        {menuOpen && <MobileMenu onClose={() => setMenuOpen(false)} />}
+        {menuOpen && <SiteMenu onClose={() => setMenuOpen(false)} />}
       </AnimatePresence>
     </>
   );
 }
 
-function MobileMenu({ onClose }: { onClose: () => void }) {
+function SiteMenu({ onClose }: { onClose: () => void }) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   useScrollLock(true);
@@ -219,39 +131,53 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
     >
       <div className="menu__top">
         <Brand onClick={onClose} />
-        <button type="button" className="menu-toggle" aria-expanded="true" aria-label="Close menu" onClick={onClose} style={{ display: "block" }}>
-          <span />
-          <span />
+        <button type="button" className="menu-btn" aria-expanded="true" onClick={onClose}>
+          <span className="menu-btn__bars menu-btn__bars--close" aria-hidden="true">
+            <span />
+            <span />
+          </span>
+          Close
         </button>
       </div>
-      <nav className="menu__links" aria-label="Mobile">
-        {links.map((link, i) => (
-          <div key={link.href} style={{ overflow: "clip" }}>
-            <motion.div {...item(i)}>
-              <Link href={link.href} className="menu__link" onClick={onClose}>
-                {link.label}
-              </Link>
-            </motion.div>
-            {link.href === "/services" && (
-              <motion.ul className="menu__services" {...item(i + 0.5)}>
-                {services.map((s) => (
-                  <li key={s.slug}>
-                    <Link href={`/services/${s.slug}`} onClick={onClose}>
-                      {s.title}
-                    </Link>
-                  </li>
-                ))}
-              </motion.ul>
-            )}
-          </div>
-        ))}
-      </nav>
-      <motion.div className="menu__foot" {...item(links.length)}>
-        <ContactTrigger variant="light">Talk to Lovelace</ContactTrigger>
-        <a href={`mailto:${site.email}`} className="t-small t-muted">
-          {site.email}
-        </a>
-      </motion.div>
+
+      <div className="menu__grid">
+        <nav className="menu__nav" aria-label="Site">
+          {links.map((link, i) => (
+            <div key={link.href} style={{ overflow: "clip" }}>
+              <motion.div {...item(i)}>
+                <Link href={link.href} className="menu__link" onClick={onClose}>
+                  {link.label}
+                </Link>
+              </motion.div>
+            </div>
+          ))}
+        </nav>
+
+        <div className="menu__aside">
+          <motion.div {...item(links.length)}>
+            <p className="section-title" style={{ marginBottom: "1rem" }}>
+              <span className="hole" aria-hidden="true" />
+              Services
+            </p>
+            <ul className="menu__services">
+              {services.map((s) => (
+                <li key={s.slug}>
+                  <Link href={`/services/${s.slug}`} onClick={onClose}>
+                    {s.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          <motion.div className="menu__foot" {...item(links.length + 1)}>
+            <ContactTrigger variant="light">Talk to Lovelace</ContactTrigger>
+            <a href={`mailto:${site.email}`} className="t-caption">
+              {site.email}
+            </a>
+          </motion.div>
+        </div>
+      </div>
     </motion.div>
   );
 }
