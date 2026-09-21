@@ -31,11 +31,15 @@ Copy and structure live in [`src/content/site.ts`](src/content/site.ts):
 
 Hosted on Netlify, which builds from the `main` branch on every push.
 
-Set `CONTACT_WEBHOOK_URL` as an environment variable to deliver contact form
-submissions to Formspree, HubSpot, Zapier, Slack, or similar. Without it,
-submissions are accepted and logged only.
+The contact form uses **Netlify Forms**. The form Netlify indexes lives in
+`public/__forms.html`; the real form is `src/components/ContactForm.tsx` and posts
+to that path. Submissions appear under **Site configuration → Forms**, and email
+notifications are configured there.
+
+Field names must match between the two files. Posting only works on a deployed
+Netlify site, so submitting from `localhost` shows the form's error state.
 
 ## Before launch
 
 See the checklist at the end of [DESIGN.md](DESIGN.md): real scheduling link and
-inbox, contact form endpoint, and the production domain in the metadata.
+the production domain in the metadata.

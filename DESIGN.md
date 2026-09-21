@@ -87,8 +87,8 @@ All copy and structure lives in `src/content/site.ts`:
 - Publish articles: add to `insights` and create `src/app/insights/[slug]/page.tsx`.
 
 ## Before launch
-- [ ] Real Calendly link and email in `site.ts`
+- [ ] Real Calendly link in `site.ts` (email is set)
 - [ ] Optional: a founders section (names, roles, headshots) — removed for now; the About block carries the credentials in prose
-- [ ] `CONTACT_WEBHOOK_URL` env var (Formspree, HubSpot, Zapier, Slack…) for the contact form
+- [x] Contact form delivery — Netlify Forms; add the email notification in Netlify
 - [ ] Production domain in `layout.tsx`, `sitemap.ts`, `robots.ts`
 - [ ] Brand assets regenerate from `Media for Lovelace/LovelaceIconFinal.png` with `npm run brand`

@@ -35,6 +35,7 @@ export function ContactForm() {
   const [errors, setErrors] = useState<Errors>({});
   const [touched, setTouched] = useState<Partial<Record<keyof Values, boolean>>>({});
   const [status, setStatus] = useState<Status>("idle");
+  const [botField, setBotField] = useState("");
   const summaryRef = useRef<HTMLDivElement>(null);
   const [showSummary, setShowSummary] = useState(false);
 
@@ -62,10 +63,18 @@ export function ContactForm() {
     setShowSummary(false);
     setStatus("sending");
     try {
-      const res = await fetch("/api/contact", {
+      // Netlify Forms: post url-encoded to the static form declared in
+      // public/__forms.html. Submissions are emailed from the Netlify dashboard.
+      const body = new URLSearchParams({
+        "form-name": "contact",
+        "bot-field": botField,
+        ...values,
+        interests: interests.join(", "),
+      });
+      const res = await fetch("/__forms.html", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...values, interests }),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
       });
       if (!res.ok) throw new Error(String(res.status));
       setStatus("sent");
@@ -130,6 +139,18 @@ export function ContactForm() {
         </motion.div>
       ) : (
         <motion.form key="form" className="form" onSubmit={onSubmit} noValidate exit={{ opacity: 0, transition: { duration: 0.2 } }}>
+          <p hidden aria-hidden="true">
+            <label>
+              Leave this field empty
+              <input
+                name="bot-field"
+                tabIndex={-1}
+                autoComplete="off"
+                value={botField}
+                onChange={(e) => setBotField(e.target.value)}
+              />
+            </label>
+          </p>
           {showSummary && errorList.length > 0 && (
             <div ref={summaryRef} tabIndex={-1} className="form-status" role="alert">
               <p className="t-h4">Check {errorList.length === 1 ? "this field" : `these ${errorList.length} fields`}:</p>

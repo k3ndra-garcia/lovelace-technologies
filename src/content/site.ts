@@ -9,9 +9,9 @@ export const site = {
   tagline: "Technology consulting for what comes next.",
   description:
     "Lovelace Technologies helps organizations evaluate, implement, and scale modern technology, from assessment to implementation.",
-  // TODO: replace with the real scheduling link and inbox.
+  // TODO: replace with the real scheduling link.
   calendlyUrl: "https://calendly.com/lovelace-technologies/intro",
-  email: "hello@lovelacetechnologies.com",
+  email: "lovelacetechnologiesgt@gmail.com",
   // Flip to true once the first case studies are published.
   showWorkInNav: false,
 };
