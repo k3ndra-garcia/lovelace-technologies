@@ -15,7 +15,7 @@ export function Intro() {
         <div className="intro__body">
           <ScrollInk
             className="t-statement"
-            text="We work alongside leadership teams to understand the technology they have, find the opportunities and risks inside it, choose the right solutions, and put them to work, then make sure their people can carry it forward."
+            text="We help leadership teams choose the right technology, then put it in place and make it stick."
           />
           <div className="intro__more">
             <Reveal style={vars({ "--mark": "var(--c-teal)" })}>
