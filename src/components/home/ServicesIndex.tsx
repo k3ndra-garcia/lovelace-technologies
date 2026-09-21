@@ -4,7 +4,6 @@ import { LineReveal } from "@/components/motion/LineReveal";
 import { Reveal } from "@/components/motion/Reveal";
 import { ServiceGraphic } from "@/components/ServiceGraphic";
 import { services } from "@/content/site";
-import { vars } from "@/lib/css";
 
 export function ServicesIndex() {
   return (
@@ -38,7 +37,6 @@ export function ServicesIndex() {
             delay={i * 0.06}
             y={18}
             className="panel panel--service"
-            style={vars({ "--service": `var(--c-${service.color})`, "--mark": `var(--c-${service.color})` })}
           >
             <Link href={`/services/${service.slug}`} className="panel__link">
               <span className="panel__art">

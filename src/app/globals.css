@@ -11,7 +11,7 @@
   --vellum: #171a1d;
   --ink: #e9eceb;
   --slate: #9aa1a6;
-  --accent: #93a9f0;
+  --accent: var(--brand);
   --accent-hover: #bccaf7;
   --rule: #262a2f;
   --rule-strong: #3b4248;
@@ -26,20 +26,14 @@
   /* Text and marks sitting on a block of colour. */
   --on-color: #eceff3;
 
-  /* Ink family: one colour per practice and per stage, all the same depth,
-     like a set of printing inks, pitched to read on the dark ground. */
-  --c-blue: #8aa4f2;
-  --c-plum: #b990dc;
-  --c-teal: #5fbfad;
-  --c-brass: #d4a24f;
-  --c-oxblood: #e08e96;
-
-  /* Saturated variants for large blocks carrying light text. */
-  --block-blue: #1b3480;
-  --block-plum: #46275e;
-  --block-teal: #14544b;
-  --block-brass: #6e4711;
-  --block-oxblood: #6a1f29;
+  /* One blue, used at four depths. Everything else is ground, bone or ink. */
+  --brand: #8aa4f2;
+  --brand-block: #1b308c;
+  --block-blue: var(--brand-block);
+  --stage-1: #101b52;
+  --stage-2: #16266f;
+  --stage-3: #1b308c;
+  --stage-4: #2139a9;
 
   /* Every element that shows a mark colour reads this. */
   --mark: var(--accent);
@@ -144,21 +138,15 @@ html {
 .on-paper {
   color-scheme: light;
 
-  --paper: #eef0ef;
-  --vellum: #e3e6e5;
+  --paper: #e9e7e1;
+  --vellum: #dedbd3;
   --ink: #16191d;
   --slate: #5b6268;
-  --accent: #1f3a8a;
-  --accent-hover: #172c6b;
-  --rule: #c9cecd;
-  --rule-strong: #aab1b1;
-  --card: #dee2e8;
-
-  --c-blue: #1f3a8a;
-  --c-plum: #4b2a63;
-  --c-teal: #17564e;
-  --c-brass: #7a4e0f;
-  --c-oxblood: #6e1f2a;
+  --accent: #1b308c;
+  --accent-hover: #142466;
+  --rule: #c7c3b9;
+  --rule-strong: #a9a49a;
+  --card: #d9d6cd;
 
   --mark: var(--accent);
 
@@ -1018,6 +1006,7 @@ ol {
 
 .hero {
   position: relative;
+  isolation: isolate;
   min-height: 100svh;
   padding-top: calc(var(--header-h) + clamp(2rem, 6vw, 5rem));
   padding-bottom: clamp(2rem, 4vw, 3rem);
@@ -1025,10 +1014,54 @@ ol {
   flex-direction: column;
 }
 
+/* Full-bleed footage behind the hero, under a mask that keeps text legible. */
+.hero__media {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 100%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  z-index: -1;
+}
+
+.hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__mask {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--paper) 94%, transparent) 0%,
+      color-mix(in srgb, var(--paper) 86%, transparent) 40%,
+      color-mix(in srgb, var(--paper) 58%, transparent) 72%,
+      color-mix(in srgb, var(--paper) 42%, transparent) 100%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--paper) 70%, transparent) 0%,
+      transparent 30%,
+      transparent 72%,
+      var(--paper) 100%
+    ),
+    linear-gradient(0deg, color-mix(in srgb, var(--brand-block) 42%, transparent), color-mix(in srgb, var(--brand-block) 42%, transparent));
+}
+
 .hero__grid {
   flex: 1;
   align-items: end;
   row-gap: 3rem;
+  position: relative;
+}
+
+.hero__foot {
+  position: relative;
 }
 
 .hero__copy {

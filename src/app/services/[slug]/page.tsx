@@ -7,7 +7,6 @@ import { ArrowRight } from "@/components/Icons";
 import { Reveal } from "@/components/motion/Reveal";
 import { PageHero } from "@/components/PageHero";
 import { services } from "@/content/site";
-import { vars } from "@/lib/css";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -31,14 +30,7 @@ export default async function ServicePage({ params }: Props) {
   const next = services[(index + 1) % services.length];
 
   return (
-    <div
-      style={vars({
-        "--mark": `var(--c-${service.color})`,
-        "--service": `var(--c-${service.color})`,
-        "--tint": `var(--c-${service.color})`,
-        "--next-service-color": `var(--c-${next.color})`,
-      })}
-    >
+    <div>
       <PageHero
         title={[service.title]}
         lead={service.lead}

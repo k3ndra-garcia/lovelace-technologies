@@ -1,6 +1,5 @@
 import { Reveal } from "@/components/motion/Reveal";
 import { ScrollInk } from "@/components/motion/ScrollInk";
-import { vars } from "@/lib/css";
 
 export function Intro() {
   return (
@@ -18,7 +17,7 @@ export function Intro() {
             text="We help leadership teams choose the right technology, then put it in place and make it stick."
           />
           <div className="intro__more">
-            <Reveal style={vars({ "--mark": "var(--c-teal)" })}>
+            <Reveal>
               <span className="hole" aria-hidden="true" style={{ marginBottom: "0.875rem" }} />
               <h3 className="t-h4">Built for established organizations</h3>
               <p className="t-muted" style={{ marginTop: "0.5rem" }}>
@@ -26,7 +25,7 @@ export function Intro() {
                 technology and the business case.
               </p>
             </Reveal>
-            <Reveal delay={0.08} style={vars({ "--mark": "var(--c-plum)" })}>
+            <Reveal delay={0.08}>
               <span className="hole" aria-hidden="true" style={{ marginBottom: "0.875rem" }} />
               <h3 className="t-h4">Clear enough to act on</h3>
               <p className="t-muted" style={{ marginTop: "0.5rem" }}>

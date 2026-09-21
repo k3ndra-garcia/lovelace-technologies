@@ -4,7 +4,7 @@ import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/
 import { useRef, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { approach } from "@/content/site";
-import { block, onBlock, vars } from "@/lib/css";
+import { onStage, stageBlocks, vars } from "@/lib/css";
 import { ease } from "@/lib/motion";
 
 const pad = (n: number) => String(n + 1).padStart(2, "0");
@@ -32,7 +32,7 @@ export function Approach({ id = "approach" }: { id?: string }) {
       id={id}
       className="approach on-night"
       aria-labelledby={`${id}-title`}
-      style={vars({ "--mark": onBlock[stage.color] })}
+      style={vars({ "--mark": onStage })}
     >
       <div ref={trackRef} className="approach__track">
         <div className="approach__pin">
@@ -73,7 +73,7 @@ export function Approach({ id = "approach" }: { id?: string }) {
 
             <motion.div
               className="approach__right"
-              animate={{ backgroundColor: block[stage.color] }}
+              animate={{ backgroundColor: stageBlocks[active] }}
               transition={{ duration: 0.7, ease }}
               aria-hidden="true"
             >
@@ -123,7 +123,7 @@ export function Approach({ id = "approach" }: { id?: string }) {
               as="li"
               key={s.step}
               className="approach-stack__item"
-              style={vars({ "--mark": onBlock[s.color] })}
+              style={vars({ "--mark": onStage })}
             >
               <span className="approach__num">{pad(i)}</span>
               <p className="t-h3">{s.step}</p>

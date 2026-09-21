@@ -6,7 +6,6 @@ import { Reveal } from "@/components/motion/Reveal";
 import { PunchCard } from "@/components/PunchCard";
 import silhouette from "@/content/silhouette-grid.json";
 import { caseStudies } from "@/content/site";
-import { vars } from "@/lib/css";
 
 export function Work({ heading = true }: { heading?: boolean }) {
   return (
@@ -14,7 +13,6 @@ export function Work({ heading = true }: { heading?: boolean }) {
       id="work"
       className="section container"
       aria-labelledby="work-title"
-      style={vars({ "--mark": "var(--c-plum)" })}
     >
       {heading && (
         <div className="work__head">

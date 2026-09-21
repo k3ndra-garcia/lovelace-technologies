@@ -20,29 +20,44 @@ never hard-code a light or dark value.
 | Deepest block | `--night` / `--on-night` | `#08090A` / `#E9ECEB` | — |
 | Text on colour blocks | `--on-color` | `#ECEFF3` | `#ECEFF3` |
 
-### The ink family
-Five inks of equal depth, one per practice, used as blocks rather than sprinkled accents.
+### Colour
+One blue, one bone, near-black. Nothing else. (The site briefly carried five
+practice colours; it was too busy, and the reference we follow — OCI by
+Buzzworthy — gets its force from restraint.)
 
-Marks are pitched light for the dark ground and swap to the deep originals
-inside `.on-paper`; the block colours are the same in both.
-
-| Ink | Token | Dark mark | `.on-paper` mark | Block | Practice · stage |
-|---|---|---|---|---|---|
-| Blue | `--c-blue` | `#8AA4F2` | `#1F3A8A` | `#1B3480` | AI Enablement · Assess |
-| Teal | `--c-teal` | `#5FBFAD` | `#17564E` | `#14544B` | Software & Implementation · Implement |
-| Brass | `--c-brass` | `#D4A24F` | `#7A4E0F` | `#6E4711` | Technology Audits · Enable |
-| Oxblood | `--c-oxblood` | `#E08E96` | `#6E1F2A` | `#6A1F29` | Governance & Compliance |
-| Plum | `--c-plum` | `#B990DC` | `#4B2A63` | `#46275E` | Technology Strategy · Prioritize |
+| Role | Token | Value |
+|---|---|---|
+| Brand mark / accent on dark | `--brand` | `#8AA4F2` |
+| Brand block | `--brand-block` | `#1B308C` |
+| Stage blocks (Approach) | `--stage-1…4` | `#101B52` → `#2139A9` |
+| Bone (light blocks) | `.on-paper --paper` | `#E9E7E1` |
+| Accent on bone | `.on-paper --accent` | `#1B308C` |
+| Text on colour | `--on-color` | `#ECEFF3` |
 
 How colour is applied:
-- `--mark` sets the colour of every punch-hole mark in a section; `--service` colours a service row's chip, hover tint and arrow; `--tint` drives a pale `.band-tint` field (9% ink over paper).
-- **Blocks**: the pinned Approach section is half dark, half a solid stage colour that changes as you scroll; the closing section is an ink-blue block above the near-black footer; the About band is a porcelain `.on-paper` block (warm brass tint) that gives the dark page one bright moment; service pages tint their "When to call us" band with the practice's ink.
-- The header watches for `[data-header-theme="light"]` sections and swaps to dark text, a porcelain bar, and the dark logo while one is under it.
-- Values live in `globals.css`; the JS-side copies (for animating the Approach block) are in `src/lib/css.ts`. Keep the two in step.
+- `--mark` colours every punch-hole mark; `--tint` drives a `.band-tint` field; `--block` sets a full-bleed `.on-block` section.
+- **Blocks**: the Approach section steps through four depths of the one blue as you scroll; the comparison section is a solid brand-blue block; the closing section is brand blue above the near-black footer; About is a bone `.on-paper` block.
+- The header watches for `[data-header-theme="light"]` sections and swaps to dark text, a bone bar, and the dark logo while one is under it.
+- Values live in `globals.css`; the stage colours are mirrored in `src/lib/css.ts` for the animated block. Keep the two in step.
 
 Type: **Host Grotesk** throughout — display, statements, and UI (large, tracking -0.03 to -0.045em). One typeface only; the site previously paired a serif for the Ada statements and no longer does. To reintroduce one for long-form Insights, add the family in `layout.tsx` and a `--font-serif` token.
 
 The brand's smallest unit is `.hole`, a rounded punch mark used for section titles, list bullets, button icons and progress.
+
+## Entry and structure
+Patterns adapted from the OCI reference, in Lovelace's own terms:
+- **Entry curtain** (`SiteLoader.tsx`): a brand-blue block where the mark punches itself in over ~0.9s, then lifts. Once per session (`sessionStorage`, with a pre-hydration script so repeat loads never flash), skipped under reduced motion.
+- **Mono labels**: Geist Mono, uppercase and letterspaced, for eyebrows, captions, breadcrumbs, chips, numbers and buttons.
+- **Column rules**: four fixed hairlines behind the page; sections with a background paint over them.
+- **Menu-only header**: brand, the contact trigger, and one Menu button at every width, opening a full-screen overlay.
+
+## Hero video
+`public/media/hero.mp4` (2.8MB, 5s loop) sits full-bleed behind the hero under
+`.hero__mask`: a left-to-right dark scrim, a brand-blue wash, and a fade into
+the page ground at the bottom. Measured against the brightest frame pixel behind
+each text block, contrast is 8.6:1 (headline), 5.3:1 (sub) and 5.1:1 (caption),
+all past AA. Phones and reduced-motion visitors get `hero-poster.jpg` instead of
+the video.
 
 ## Motion (`src/lib/motion.ts`, `src/components/motion/`)
 Timing was studied from the Armory reference: fast, critically damped springs, ease-out arrivals, ~0.08s stagger.

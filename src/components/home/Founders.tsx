@@ -1,15 +1,13 @@
 import Link from "next/link";
 import { LineReveal } from "@/components/motion/LineReveal";
 import { Reveal } from "@/components/motion/Reveal";
-import { vars } from "@/lib/css";
 
 export function Founders({ showLink = true }: { showLink?: boolean }) {
   return (
     <section
-      className="section on-paper band-tint"
+      className="section on-paper"
       aria-labelledby="founders-title"
       data-header-theme="light"
-      style={vars({ "--tint": "var(--c-brass)", "--mark": "var(--c-brass)" })}
     >
       <div className="container grid">
         <div className="founders__note">

@@ -1,8 +1,6 @@
 // Single source of truth for site copy and structure.
 // Adding a service, insight, or case study should only require editing this file.
 
-import type { Ink } from "@/lib/css";
-
 export const site = {
   name: "Lovelace Technologies",
   shortName: "Lovelace",
@@ -24,8 +22,6 @@ export const nav = [
 
 export type Service = {
   slug: string;
-  /** The practice's colour in the ink family. */
-  color: Ink;
   title: string;
   summary: string;
   lead: string;
@@ -37,7 +33,6 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "ai-enablement",
-    color: "blue",
     title: "AI Enablement",
     summary:
       "Find where AI is genuinely useful in your business, put it to work safely, and help your people use it well.",
@@ -73,7 +68,6 @@ export const services: Service[] = [
   },
   {
     slug: "software-implementation",
-    color: "teal",
     title: "Software & Implementation",
     summary:
       "Choose the right platforms, then configure, integrate, and launch them alongside your team.",
@@ -109,7 +103,6 @@ export const services: Service[] = [
   },
   {
     slug: "technology-audits",
-    color: "brass",
     title: "Technology Audits",
     summary:
       "An independent, clear-eyed view of your systems, spend, and risks, with findings ranked by what to fix first.",
@@ -145,7 +138,6 @@ export const services: Service[] = [
   },
   {
     slug: "governance-compliance",
-    color: "oxblood",
     title: "Governance & Compliance",
     summary:
       "Policies, controls, and oversight that let you adopt new technology with confidence.",
@@ -181,7 +173,6 @@ export const services: Service[] = [
   },
   {
     slug: "technology-strategy",
-    color: "plum",
     title: "Technology Strategy",
     summary:
       "A roadmap that ties technology decisions to business goals, budgets, and timelines.",
@@ -220,28 +211,24 @@ export const services: Service[] = [
 export const approach = [
   {
     step: "Assess",
-    color: "blue",
     title: "Understand where you stand",
     body: "We map your systems, data, spend, and teams, and talk to the people who use the tools every day, not only the people who bought them.",
     deliverable: "Current-state assessment",
   },
   {
     step: "Prioritize",
-    color: "plum",
     title: "Decide what matters most",
     body: "We rank opportunities and risks by value, effort, and urgency, then turn them into a sequenced roadmap with a budget attached.",
     deliverable: "Prioritized roadmap",
   },
   {
     step: "Implement",
-    color: "teal",
     title: "Put the plan to work",
     body: "We select vendors, configure systems, integrate data, and manage the launch. We stay accountable for delivery, not just the plan.",
     deliverable: "Systems in production",
   },
   {
     step: "Enable",
-    color: "brass",
     title: "Make it last",
     body: "We train your teams, document how things work, and set up the governance that keeps improving things after we step back.",
     deliverable: "Teams that own it",

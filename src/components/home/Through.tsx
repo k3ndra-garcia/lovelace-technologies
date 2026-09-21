@@ -46,7 +46,7 @@ export function Through() {
     <section
       className="section on-block"
       aria-labelledby="through-title"
-      style={vars({ "--block": "var(--block-teal)" })}
+      style={vars({ "--block": "var(--brand-block)" })}
     >
       <div className="container">
       <div className="grid">
