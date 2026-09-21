@@ -36,7 +36,7 @@ Buzzworthy — gets its force from restraint.)
 
 How colour is applied:
 - `--mark` colours every punch-hole mark; `--tint` drives a `.band-tint` field; `--block` sets a full-bleed `.on-block` section.
-- **Blocks**: the Approach section steps through four depths of the one blue as you scroll; the comparison section is a solid brand-blue block; the closing section is brand blue above the near-black footer; About is a bone `.on-paper` block.
+- **Blocks**: the Approach section lays a translucent blue over the hero footage, stepping lighter through four stages as you scroll, with the dotted field and column rules reading through it (text stays 11–15:1); the comparison section is a solid brand-blue block; the closing section is brand blue above the near-black footer; About is a bone `.on-paper` block.
 - The header watches for `[data-header-theme="light"]` sections and swaps to dark text, a bone bar, and the dark logo while one is under it.
 - Values live in `globals.css`; the stage colours are mirrored in `src/lib/css.ts` for the animated block. Keep the two in step.
 

@@ -1,10 +1,10 @@
 "use client";
 
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { approach } from "@/content/site";
-import { onStage, stageBlocks, vars } from "@/lib/css";
+import { onStage, stageTints, vars } from "@/lib/css";
 import { ease } from "@/lib/motion";
 
 const pad = (n: number) => String(n + 1).padStart(2, "0");
@@ -18,6 +18,15 @@ const pad = (n: number) => String(n + 1).padStart(2, "0");
 export function Approach({ id = "approach" }: { id?: string }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  const [showMedia, setShowMedia] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 60rem) and (prefers-reduced-motion: no-preference)");
+    const sync = () => setShowMedia(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
   const { scrollYProgress } = useScroll({ target: trackRef, offset: ["start start", "end end"] });
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
@@ -36,6 +45,28 @@ export function Approach({ id = "approach" }: { id?: string }) {
     >
       <div ref={trackRef} className="approach__track">
         <div className="approach__pin">
+          <div className="approach__media" aria-hidden="true">
+            {showMedia && (
+              <video
+                className="approach__video"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="none"
+                poster="/media/hero-poster.jpg"
+              >
+                <source src="/media/hero.mp4" type="video/mp4" />
+              </video>
+            )}
+            <span className="approach__scrim" />
+            <span className="approach__rules">
+              <span />
+              <span />
+              <span />
+              <span />
+            </span>
+          </div>
           <div className="approach__panes">
             <div className="approach__left">
               <div className="approach__head">
@@ -73,7 +104,7 @@ export function Approach({ id = "approach" }: { id?: string }) {
 
             <motion.div
               className="approach__right"
-              animate={{ backgroundColor: stageBlocks[active] }}
+              animate={{ backgroundColor: stageTints[active] }}
               transition={{ duration: 0.7, ease }}
               aria-hidden="true"
             >

@@ -1547,6 +1547,8 @@ ol {
 
 .approach {
   position: relative;
+  /* Transparent, so the column rules read through as they do elsewhere. */
+  background: transparent;
 }
 
 .approach__track {
@@ -1557,6 +1559,37 @@ ol {
   position: sticky;
   top: 0;
   height: 100svh;
+  isolation: isolate;
+}
+
+/* The same footage as the hero, well behind a scrim and a dotted field. */
+.approach__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.approach__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.approach__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      120% 90% at 20% 50%,
+      color-mix(in srgb, var(--night) 92%, transparent) 0%,
+      color-mix(in srgb, var(--night) 88%, transparent) 55%,
+      color-mix(in srgb, var(--night) 82%, transparent) 100%
+    ),
+    radial-gradient(var(--night-rule) 1px, transparent 1px);
+  background-size:
+    auto,
+    14px 14px;
 }
 
 /* Dark column of stages beside a block of the current stage's colour. */
@@ -1575,9 +1608,31 @@ ol {
     clamp(1.5rem, 4vh, 3rem) var(--gutter);
 }
 
+/* The page's column rules, redrawn inside the pinned section. */
+.approach__rules {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.approach__rules span {
+  border-left: 1px solid color-mix(in srgb, var(--on-color) 12%, transparent);
+}
+
+.approach__rules span:last-child {
+  border-right: 1px solid color-mix(in srgb, var(--on-color) 12%, transparent);
+}
+
 .approach__right {
   --mark: currentColor;
   position: relative;
+  border-left: 1px solid color-mix(in srgb, var(--on-color) 22%, transparent);
+  backdrop-filter: blur(2px);
   display: flex;
   flex-direction: column;
   justify-content: center;
