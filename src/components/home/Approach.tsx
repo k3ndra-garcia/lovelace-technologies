@@ -102,10 +102,9 @@ export function Approach({ id = "approach" }: { id?: string }) {
               </div>
             </div>
 
-            <motion.div
+            <div
               className="approach__right"
-              animate={{ backgroundColor: stageTints[active] }}
-              transition={{ duration: 0.7, ease }}
+              style={vars({ "--stage-tint": stageTints[active] })}
               aria-hidden="true"
             >
               <div className="approach__detail">
@@ -126,7 +125,7 @@ export function Approach({ id = "approach" }: { id?: string }) {
                   </motion.div>
                 </AnimatePresence>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Full content for assistive technology, independent of scroll position. */}

@@ -3,10 +3,10 @@ export const vars = (values: Record<string, string>) => values as React.CSSPrope
 
 /** The four stages: one blue, stepping lighter, laid over the footage. */
 export const stageTints = [
-  "rgba(16, 27, 82, 0.62)",
-  "rgba(22, 38, 111, 0.6)",
-  "rgba(27, 48, 140, 0.58)",
-  "rgba(33, 57, 169, 0.56)",
+  "rgba(16, 27, 82, 0.52)",
+  "rgba(22, 38, 111, 0.5)",
+  "rgba(27, 48, 140, 0.48)",
+  "rgba(33, 57, 169, 0.46)",
 ];
 
 /** The mark colour that sits on those blocks. */

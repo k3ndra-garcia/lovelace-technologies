@@ -1601,11 +1601,25 @@ ol {
   border-right: 1px solid color-mix(in srgb, var(--on-color) 12%, transparent);
 }
 
+/* Registered so the stage colour can transition rather than jump. */
+@property --stage-tint {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(16, 27, 82, 0.52);
+}
+
 .approach__right {
   --mark: currentColor;
+  --stage-tint: rgba(16, 27, 82, 0.52);
   position: relative;
-  border-left: 1px solid color-mix(in srgb, var(--on-color) 22%, transparent);
-  backdrop-filter: blur(2px);
+  background-image: linear-gradient(
+    100deg,
+    transparent 0%,
+    color-mix(in srgb, var(--stage-tint) 35%, transparent) 14%,
+    color-mix(in srgb, var(--stage-tint) 80%, transparent) 38%,
+    var(--stage-tint) 62%
+  );
+  transition: --stage-tint 700ms var(--ease-out);
   display: flex;
   flex-direction: column;
   justify-content: center;
