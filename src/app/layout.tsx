@@ -47,7 +47,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${host.variable} ${mono.variable}`}>
+    <html
+      lang="en"
+      className={`${host.variable} ${mono.variable}`}
+      // The entry script stamps data-entry before hydration; the mismatch is intended.
+      suppressHydrationWarning
+    >
       <body>
         <script dangerouslySetInnerHTML={{ __html: ENTRY_SCRIPT }} />
         <SiteLoader />
