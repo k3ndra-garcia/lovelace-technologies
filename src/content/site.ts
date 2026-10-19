@@ -33,7 +33,7 @@ export const services: Service[] = [
     slug: "ai-enablement",
     title: "AI Enablement",
     summary:
-      "Find where AI is genuinely useful in your business, put it to work safely, and help your people use it well.",
+      "Identify where AI creates measurable value, deploy it safely, and equip your teams to use it well.",
     lead: "AI is only valuable when it changes how work gets done. We identify the use cases worth pursuing, build and launch them with your team, and set up the training and guardrails that make adoption stick.",
     outcomes: [
       "A ranked list of AI opportunities with clear business cases",

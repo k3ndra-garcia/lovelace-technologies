@@ -14,7 +14,7 @@ export function Intro() {
         <div className="intro__body">
           <ScrollInk
             className="t-statement"
-            text="We help leadership teams choose the right technology, then put it in place and make it stick."
+            text="We help leadership teams decide where AI and new systems belong, implement them, and embed them in how the organization works."
           />
           <div className="intro__more">
             <Reveal>

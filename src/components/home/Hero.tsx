@@ -57,8 +57,8 @@ export function Hero() {
           />
           <Reveal delay={0.65} y={16}>
             <p className="t-lead hero__sub">
-              Lovelace helps organizations evaluate, implement, and scale modern technology, from the
-              first assessment to the day your team owns it.
+              Lovelace helps organizations evaluate, implement, and scale AI and modern technology,
+              from the first assessment through to full adoption.
             </p>
           </Reveal>
           <Reveal delay={0.8} y={16} className="hero__actions">
